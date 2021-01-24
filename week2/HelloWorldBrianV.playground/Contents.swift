@@ -21,4 +21,4 @@ print(name1, name2, name3, name4, separator: ", ", terminator:"\n", to:&line)
 print(line)
 
 // I'm adding something here to practice with github
-print(line,line)
+print(line,line, line)
