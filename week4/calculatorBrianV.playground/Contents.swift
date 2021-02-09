@@ -16,7 +16,6 @@ var division: Double
 var percent: Double
 var percentOf: Double
 
-var fraction: [Int] = []
 
 // operations ---------------------------------------
 addition = firstNumber + secondNumber

@@ -15,7 +15,7 @@ import Foundation
 */
  
 // variables
-let coefficient1X = 31
+let coefficient1X = 3
 let coefficient1Y = 5
 let constant1 = 9
 
@@ -30,8 +30,7 @@ var solutionForY: Double
 var equationOne = [coefficient1X, coefficient1Y, constant1]
 var equationTwo = [coefficient2X, coefficient2Y, constant2]
 
-// I use this to avoid having +-
-var sign = "+"
+
 
 // operations
 /* NOTE: This is not an efficient way! But it avoids any complicated functions like findind the GCD and LCM and using any loops
@@ -45,11 +44,13 @@ Step 5: Use Equation 1 to find value of X
 
 print("Solve \(coefficient1X)x + \(coefficient1Y)y = \(constant1) and \(coefficient2X)x + \(coefficient2Y)y = \(constant2)")
 
+print("Multiply equations 1 by a constant and equation 2 by a constant so they have the same but opposite coefficients.")
+
 // Step 1 - Multiply Equation 1 by Coefficient2X
 equationOne[0] *= coefficient2X
 equationOne[1] *= coefficient2X
 equationOne[2] *= coefficient2X
-print("Multiply Equation 1 by \(coefficient2X) to get \(equationOne[0])x \(sign) \(equationOne[1])y = \(equationOne[2])")
+print("Multiply Equation 1 by \(coefficient2X) to get \(equationOne[0])x + \(equationOne[1])y = \(equationOne[2])")
 
 // Step 2 - Multiply Equation 2 by Coefficient1X
 //        - check if coefficients for X are same sign.
@@ -57,13 +58,13 @@ if coefficient1X * coefficient2X > 0 {
     equationTwo[0] *= -1*coefficient1X
     equationTwo[1] *= -1*coefficient1X
     equationTwo[2] *= -1*coefficient1X
-    print("Multiply Equation 2 by \(-1*coefficient1X) to get \(equationTwo[0])x \(sign) \(equationTwo[1])y = \(equationTwo[2])")
+    print("Multiply Equation 2 by \(-1*coefficient1X) to get \(equationTwo[0])x + \(equationTwo[1])y = \(equationTwo[2])")
 }
 else {
     equationTwo[0] *= coefficient1X
     equationTwo[1] *= coefficient1X
     equationTwo[2] *= coefficient1X
-    print("Multiply Equation 2 by \(coefficient1X) to get \(equationTwo[0])x \(sign) \(equationTwo[1])y = \(equationTwo[2])")
+    print("Multiply Equation 2 by \(coefficient1X) to get \(equationTwo[0])x + \(equationTwo[1])y = \(equationTwo[2])")
 }
 
 // Step 3 - add equations (the Xs will cancel)
