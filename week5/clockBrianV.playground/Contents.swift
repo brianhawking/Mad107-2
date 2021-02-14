@@ -24,7 +24,7 @@ Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
     clock.second += 1
     
     // check if second variable reaches 60 seconds. If so, reset to 0
-    if (clock.second % Max.second == 0) {
+    if (clock.second == Max.second) {
         
         clock.second = 0
         
@@ -37,13 +37,13 @@ Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
             clock.hour += 1
             
             // if hour reaches "13" it should be reset to 1
-            if (clock.hour % Max.hour == 0){
+            if (clock.hour == Max.hour){
                 clock.hour = 1
             }
         }
     }
     
-
+    
     // displays the current time based on 4 cases
     switch (clock.minute, clock.second) {
         

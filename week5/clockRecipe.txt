@@ -1,0 +1,25 @@
+Clock Recipe
+
+Ingredients:
+
+1. I'll create a variable called clock, which will be a tuple with keys hour, minute, and second.  Something like var clock = (hour: 3, minute: 34, second: 45) 
+
+2.  I'll create a Constant tuple to hold the max for the hour, minute, and seconds. Something like let Max = (hour: , minute, second)
+
+3.  I'll use apple's timer class.  It will trigger every second so I can update all the variables and print the time to the console.\
+
+4.  Because I'm using the timer class I won't need any loops.
+
+5. The operators will be += to increment the seconds, minutes, and hour.   And == to check when minutes or seconds = 60 or when hour = 13
+
+Directions: The plan
+
+1.  Each time the timer is triggered I will check some conditions on the current values of the hour, minute, and second variables.  This will all be done in the closure of the timer.
+
+2.  If the seconds == 60, increment minute by 1.  Set second back to 0.
+
+3.  If minute == 60, increment hour by 1.  Set minute back to 0.
+
+4.  If hour == 13 set it back to 1.
+
+5.  I'll use a switch statement to check the values for minute and second.  If minute or second is less than 10 I want to add a 0 when printing to the console.  For example, 3:5 2 should print as 3:05 02. 
