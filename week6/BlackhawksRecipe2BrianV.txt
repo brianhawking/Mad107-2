@@ -78,7 +78,7 @@ Ingredients
 
 	g.  Sort roster by country (I'll sort it like how I sort by age)
 
-		- I need a way to grab the last three chracters from the birthplace 
+		- I need a way to grab the last three characters from the birthplace 
 		- Found suffix() from Apple Docs that does this
 		- birthplace.suffix(3) will give me last three letters of birthplace string (i.e. the country)
 
