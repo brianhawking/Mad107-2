@@ -1,28 +1,46 @@
 import Foundation
 
 var fibonacciNumbers:[Int] = []
-var maxNumber: Int = 1000
 
 func calculateFibonacciNumbers(max: Int) -> [Int] {
-    
+
     var fibonacci: [Int] = [1,1]
     var index: Int = 2
-    
+
     while fibonacci[index-2] + fibonacci[index-1] < max {
         fibonacci.append(fibonacci[index-2] + fibonacci[index-1])
         index += 1
     }
-    
+
     return fibonacci
 }
 
-fibonacciNumbers = calculateFibonacciNumbers(max: maxNumber)
+/*
+func calculateFibonacciNumbers(max: Int) -> [Int] {
 
-print(fibonacciNumbers)
+    var fibonacci: [Int] = [1,1]
+    var index: Int = 2
 
-for i in 2..<fibonacciNumbers.count {
-    print(Double(fibonacciNumbers[i-1])/Double(fibonacciNumbers[i-2]))
+    while (Int.max - fibonacci[index-1] > fibonacci[index-2]), fibonacci[index-2] + fibonacci[index-1] < max {
+        fibonacci.append(fibonacci[index-2] + fibonacci[index-1])
+        index += 1
+    }
+
+    return fibonacci
 }
+*/
+
+func printSequence(array: [Int]) {
+    for (key, value) in array.enumerated() {
+        print(key+1, "-", value)
+    }
+}
+
+
+fibonacciNumbers = calculateFibonacciNumbers(max: 1000)
+printSequence(array: fibonacciNumbers)
+
+
 
 
 

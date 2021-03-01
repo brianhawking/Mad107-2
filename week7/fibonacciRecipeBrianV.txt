@@ -27,6 +27,6 @@ Directions
 
 	3. Create an array with [1,1] as the first two members
 
-	4. If the sum of the two most current numbers is less than maxNumber then add the new number to the list
+	4. If the sum of the two most current numbers is less than maxNumber then add the new number to the Fibonacci list
 
 	5. If the sum of the two most current numbers is greater than or equal to maxNumber then exit loop and return array

@@ -15,12 +15,38 @@ var movieDatabase: [String: [String]] = [
     "1980s": []
     ]
 
-//print(movieDatabase)
-
 // find movies, write it down, and categorize it.
 var moviesOnShelf: [(name: String, categories:[String])] = []
-var moviesInBasement: [(name: String, categories: [String])] = []
-var moviesInStorage: [(name: String, categories: [String])] = []
+
+
+func addMoviesToDatabase(movies: [(name: String, categories:[String])]) {
+    for movie in movies {
+        for category in movie.categories {
+            // get all movies in database with that category
+            if var arrayOfMovies = movieDatabase[category] {
+                arrayOfMovies.append(movie.name)
+                movieDatabase.updateValue(arrayOfMovies, forKey: category)
+            }
+            else {
+                movieDatabase[category] = [movie.name]
+            }
+        }
+    }
+}
+
+func filter(database: [String: [String]], by: (String)->Void) {
+    print("HI FROM FILTER")
+}
+
+func showAllMovies() {
+    for (key, value) in movieDatabase {
+        for movie in value {
+            print(key," - ", movie)
+        }
+    }
+}
+
+let filteredMovies = filter(database: movieDatabase
 
 
 moviesOnShelf.append((name: "Up", categories: ["Animated", "<120", "Kid Friendly"]))
@@ -29,68 +55,19 @@ moviesOnShelf.append((name: "Jumanji 2", categories: ["Action", "Sony Pictures"]
 moviesOnShelf.append((name: "Ready Player One", categories: ["Action", "Warner Bros. Pictures", "Fantasy"]))
 moviesOnShelf.append((name: "Cars", categories: ["Animated", "<120", "Good Soundtrack", "Kid Friendly"]))
 moviesOnShelf.append((name: "Harry Potter and the Sorcerer's Stone", categories: ["Kid Friendly", "Fantasy", ">120"]))
-
-//print(moviesOnShelf)
-
-for movie in moviesOnShelf {
-    //print(movie.name)
-}
+moviesOnShelf.append((name: "Avengers", categories: ["Disney", "Action", "Good Soundtrack", "Marvel"]))
+moviesOnShelf.append((name: "The Breakfast Club", categories: ["Coming of Age", "1980s"]))
+moviesOnShelf.append((name: "Willow", categories: ["Fantasy", "Action", "1980s"]))
 
 
-// add movies to database
-for movie in moviesOnShelf {
-    
-    // access a category from the movie
-    for category in movie.categories {
-       
-        // get all moves in th database for that category
-        if var arrayOfMovies = movieDatabase[category] {
-            
-            arrayOfMovies.append(movie.name)
-            movieDatabase.updateValue(arrayOfMovies, forKey: category)
-            
-        }
-        else {
-            // enter first movie of that category if the category doesn't exist
-            movieDatabase[category] = [movie.name]
-        }
-        
-    }
-}
+addMoviesToDatabase(movies: moviesOnShelf)
+showAllMovies()
 
-//print(movieDatabase)
+// ======= FILTER ========================
 
-// enter movies from basement
-moviesInBasement.append((name: "Avengers", categories: ["Disney", "Action", "Good Soundtrack", "Marvel"]))
-moviesInBasement.append((name: "The Breakfast Club", categories: ["Coming of Age", "1980s"]))
-moviesInBasement.append((name: "Willow", categories: ["Fantasy", "Action", "1980s"]))
+// filter by union, intersection, all, alphabetical
+filter(movies: movieDatabase, by: )
 
-for movie in moviesInBasement {
-    
-    for category in movie.categories {
-       
-        if var arrayOfMovies = movieDatabase[category] {
-            
-            arrayOfMovies.append(movie.name)
-            movieDatabase.updateValue(arrayOfMovies, forKey: category)
-        }
-        else {
-            // enter first movie of that category
-            movieDatabase[category] = [movie.name]
-        }
-        
-    }
-}
-
-//print(movieDatabase)
-
-
-
-//for (key, value) in movieDatabase {
-//    for movie in value {
-//        print(key," - ", movie)
-//    }
-//}
 
 //======== GET CURRENT DATABASE TYPES =======================
 //for category in movieDatabase.keys {
