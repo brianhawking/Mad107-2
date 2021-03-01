@@ -21,7 +21,7 @@ func calculateFibonacciNumbers(max: Int) -> [Int] {
     var fibonacci: [Int] = [1,1]
     var index: Int = 2
 
-    while (Int.max - fibonacci[index-1] > fibonacci[index-2]), fibonacci[index-2] + fibonacci[index-1] < max {
+    while max - fibonacci[index-1] > fibonacci[index-2] {
         fibonacci.append(fibonacci[index-2] + fibonacci[index-1])
         index += 1
     }

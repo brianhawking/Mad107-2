@@ -1,6 +1,6 @@
 Fibonacci Recipe
 
-Objectve: Print out fibonacci numbers up to a max value N
+Objectve: Print out fibonacci numbers up to a max value 
 
 Ingredients (Variables):
 
@@ -12,7 +12,7 @@ Ingredients (Variables):
 		i. var index - keep track of index of array
 		ii. var fibonacci - updated list of fibonacci numbers less than maxNumber
 
-Directions
+Directions:
 
 	1. func calculateFibonacciNumbers(max: Int) -> [Int]
 

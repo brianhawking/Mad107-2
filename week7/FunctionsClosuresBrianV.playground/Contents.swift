@@ -76,23 +76,25 @@ func search(database: [String: [String]], with categories: [String], filterBy: (
 
 
 
-//let filterByNone = search(database: movieDatabase, with: Array(movieDatabase.keys)) {
-//    (movies, category) in
-//    return Array(Set(movies + movieDatabase[category]!))
-//}
-//
-//let filteredByIntersection = search(database: movieDatabase, with: ["Fantasy", "Action"]) {
-//    (movies, category) in
-//    return movies.filter(movieDatabase[category]!.contains)
-//}
-//
-//let filteredByUnion = search(database: movieDatabase, with: ["Fantasy", "Action"]) { (movies, category) in
-//    return Array(Set(movies + movieDatabase[category]!))
-//}
-
-let filterByUnionAscending = search(database: movieDatabase, with: []) { (movies, category) in
-    return Array(Set(movies + movieDatabase[category]!)).sorted()
+let filterByNone = search(database: movieDatabase, with: Array(movieDatabase.keys)) {
+    (movies, category) in
+    return Array(Set(movies + movieDatabase[category]!))
 }
+
+let filteredByIntersection = search(database: movieDatabase, with: ["Fantasy", "Action"]) {
+    (movies, category) in
+    return movies.filter(movieDatabase[category]!.contains)
+}
+
+let filteredByUnion = search(database: movieDatabase, with: ["Fantasy", "Action"]) { (movies, category) in
+    return Array(Set(movies + movieDatabase[category]!))
+}
+
+let filterByUnionAscending = search(database: movieDatabase, with: ["Fantasy"]) { (movies, category) in
+    return Array(Set(movies + movieDatabase[category]!)).sorted(by: <)
+}
+
+
 
 
 
