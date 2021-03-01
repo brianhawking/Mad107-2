@@ -1,4 +1,3 @@
-Fibonacci Recipe
 
 Objectve: Print out fibonacci numbers up to a max value 
 
