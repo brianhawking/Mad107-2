@@ -4,11 +4,9 @@ Objectve: Print out fibonacci numbers up to a max value
 
 Ingredients (Variables):
 
-	1. let maxNumber: Int - program finds all fibonacci numbers up to this maxNumber
+	1. var fibonacciNumbers:[Int] - array that will store all the fibonacci numbers
 
-	2. var fibonacciNumbers:[Int] - array that will store all the fibonacci numbers
-
-	3.  Within calculateFibonacciNumbers
+	2.  Within calculateFibonacciNumbers
 		i. var index - keep track of index of array
 		ii. var fibonacci - updated list of fibonacci numbers less than maxNumber
 
@@ -16,7 +14,7 @@ Directions:
 
 	1. func calculateFibonacciNumbers(max: Int) -> [Int]
 
-		The function will take in the maxNumber.  And output an array containing all the Fibonacci numbers up to maxNumber.
+		The function will take in the max number.  And output an array containing all the Fibonacci numbers up to max number.
 
 	2. Fibonacci numbers start with f1 = 1, f2 = 1.  The next number in the sequence is calculated by the sum of the two previous numbers. 
 
