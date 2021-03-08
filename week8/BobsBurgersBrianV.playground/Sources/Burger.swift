@@ -87,6 +87,29 @@ public struct Burger {
         return false
     }
     
+    public mutating func addBun(item: String) {
+        
+        if !isItemOnList(item: item){
+            return
+        }
+        
+        bun = item
+        displayText(text: "Select your meats")
+        listMeats()
+    
+    }
+    
+    public mutating func addCheese(item: String) {
+        
+        if !isItemOnList(item: item){
+            return
+        }
+        
+        cheese = item
+        displayText(text: "Select your condiments")
+        listCondiments()
+    }
+    
     public mutating func addMeats(arrayOfMeats: [String]) {
         for meat in arrayOfMeats {
             if isItemOnList(item: meat) {
@@ -103,30 +126,6 @@ public struct Burger {
         
         displayText(text: "Select your Cheese")
         listCheeses()
-    }
-    
-    public mutating func addBun(item: String) {
-        
-        if !isItemOnList(item: item){
-            return
-        }
-        
-        bun = item
-        displayText(text: "Select your meats")
-        listMeats()
-        
-        
-    }
-    
-    public mutating func addCheese(item: String) {
-        
-        if !isItemOnList(item: item){
-            return
-        }
-        
-        cheese = item
-        displayText(text: "Select your condiments")
-        listCondiments()
     }
     
     public mutating func addCondiments(items: [String]) {
