@@ -1,0 +1,46 @@
+Bills Burgers Recipe
+
+Ingredients
+
+	1. Customer struct
+
+		a. Variables
+			
+			i. Items array - these will contain the burgers the user adds
+			ii. Total - variable to hold the value for the total cost of burgers
+
+		b. Methods
+
+			i. addItem - will add the burger item to the items array
+			ii. checkout - will calulate the total cost of the burgers
+
+	2. Burger struct
+
+		a. Variables (all optionals)
+
+			i. bun - string containing the bun type
+			ii. meats - string array containing all the meats 
+			iii. cheese - string containing the cheese
+			iv. condiments - string array containing all the condiments
+
+			v. enums
+				- list of condiments
+				- list of meats
+				- list of cheeses
+				- list of buns
+
+		b. Methods (probably a lot of them)
+
+			i. listMeats - loop through meats enum and display it to customer
+			ii. listCheeses - loop through cheeses enum and display it to customer
+			iii. listBuns - loop through buns enum and display it to customer
+			iv. listCondiments - oop through condiments enum and display it to customer
+
+			v. addMeats - use optional binding add meats to meats array
+			vi. addCheeses - use optional binding add cheese to cheese string
+			vii. addCondiments - use optional binding add condiments to condiments array
+			viii. addBuns - use optional binding add bun to bun string
+
+			ix. Since I'll be displaying a lot of text add a displayText function. Make it look good!
+
+			x. isItemOnList - function that checks if the item the customer added is available 

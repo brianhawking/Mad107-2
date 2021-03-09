@@ -36,17 +36,17 @@ public struct Customer {
 var customer = Customer()
 
 // start interaction
-print("Welcome to Bill's Burgers.  How can I help you?")
+print("Welcome to Bill's Burgers.  All burgers: $10.50, $2.50 for extra meat. How can I help you?")
 
 // select items
 var burger = Burger()
 
 // add bun
-burger.addBun(item: "wheat")
+burger.addBun(item: "Pretzel")
 
 
 // add meats
-burger.addMeats(arrayOfMeats: ["Beef", "eggsalad"])
+burger.addMeats(arrayOfMeats: ["Beef", "Bacon", "Ham"])
 
 // select cheese
 burger.addCheese(item: "")
@@ -66,10 +66,10 @@ var burger2 = Burger()
 burger2.addBun(item: "Wheat")
 
 // add meats
-burger2.addMeats(arrayOfMeats: ["Beef", "Turkey"])
+burger2.addMeats(arrayOfMeats: ["Beef", "Bacon"])
 
 // select cheese
-burger2.addCheese(item: "")
+burger2.addCheese(item: "American")
 
 // select condiments
 burger2.addCondiments(items: ["fried_egg", "tomatoes", "bbq_sauce"])
