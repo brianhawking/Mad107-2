@@ -44,3 +44,17 @@ Ingredients
 			ix. Since I'll be displaying a lot of text add a displayText function. Make it look good!
 
 			x. isItemOnList - function that checks if the item the customer added is available 
+
+Directions
+
+	1. Create a customer: var customer = Customer()
+	
+	2. Create a burger: var burger = Burger()
+
+	3. run the functions listBun, addBun, listMeats, addMeats, listCheese, addCheese, listCondiments, addCondiments to get comstumer input. This will add it to the burger variable
+
+	4. When everything is added to the burger, add it to the customer's cart
+
+	5. Ask if you want to add another burger
+
+	6. When all burgers are added, run the function checkout.  This will total up the cost of all the burgers. 
