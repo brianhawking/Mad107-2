@@ -390,37 +390,7 @@ class Toyota {
             return
         }
         
-        
-        
-//
-//        if let package = PackagedAccessories[name] {
-//            for acc in package {
-//
-//                if InteriorAccessories[acc] != nil {
-//                    if myAccessories != nil {
-//                        myAccessories!.append(acc)
-//                    }
-//                    else {
-//                        myAccessories = [acc]
-//                    }
-//                    displayText(text: "\(acc) added.")
-//                    myAccessories = Array(Set(myAccessories!))
-//                }
-//
-//                if  ExteriorAccessories[acc] != nil {
-//                    if myAccessories != nil {
-//                        myAccessories!.append(acc)
-//
-//                    }
-//                    else {
-//                        myAccessories = [acc]
-//                    }
-//                    displayText(text: "\(acc) added.")
-//                    myAccessories = Array(Set(myAccessories!))
-//                }
-//            }
-//            return
-//        }
+ 
         displayText(text: "Accessory was not found.")
     }
 }
@@ -489,7 +459,7 @@ var car = Prius()
 
 car.start()
 
-car.selectModel(model: "Prius XLE")
+car.selectModel(model: "Prius Limited")
 
 car.nextStep()
 
@@ -505,8 +475,8 @@ car.selectInteriorColor(color: "Harvest Beige Softex Trim")
 
 car.nextStep()
 
-//car.selectPackage(name: "Advanced Technology Package")
-car.selectPackage(name: "Premium Convenience Package")
+
+//car.selectPackage(name: "Premium Convenience Package")
 
 car.nextStep()
 

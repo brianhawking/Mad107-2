@@ -1,0 +1,98 @@
+Build My Prius Recipe
+
+Ingredients:
+
+	1. Toyota class
+
+		- Properties
+			- myType:  Prius, Corolla, etc.
+			- myModel: specific model of prius, etc.
+			- myEngine
+			- myInteriorColor
+			- myExteriorColor
+			- myPackages: array of all packages added
+			- myAccessories: array of all accessories added
+			- currentStep: Use this to mimic the "next step"
+			- myCost: total cost of the car
+
+		- Constants (Dictionaries)
+			- ExteriorColors: Dictionary array with color and cost
+			- InteriorColors: Dictionary array with color and cost
+			- Models: Dictionary with car models and cost
+			- InteriorAccessories: Dictionary with interior accessories and cost
+			- ExteriorAccessories: Dictionary with exterior accessories and cost
+			- PackagedAccessories: Dictionary with package name and array of included accessories
+			- CarPackages: Dictionary with package name and cost
+
+		- Methods
+
+			- displayText: lets me format the output
+			- displayRow: lets me format the output in the summary
+			- displaySummary: displays the car features and cost
+
+			- nextStep(): will give directions on what to do for the next step
+
+			- displayModels: lists models and cost to user
+			- displayEngines: list engines and cost to user
+			- displayExteriorColors: list colors and cost to user
+			- displayInteriorColors: list colors and cost to user
+			- displayPackages: lists pacakges and cost to user
+			- displayAccessories: lists all accessories, but you can filter by all, interior, exterior, or by packages
+			
+
+			** Will display an error to user if they try selecting something that does not exist.**
+
+			- selectModel: save model in myModel
+			- selectEngine: save engine in myEngine
+			- selectExteriorColor: save exterior color in myExteriorColor
+			- selectInteriorColor: save interior color in myInteriorColor
+			- selectAccessories: save accessories in myAccessories
+			- selectPackage: save package to myPackages
+
+	2. Prius Class - inherits from Toyota class
+
+		Properites: 
+			- inherits all properies and methods from Toyota
+
+		Methods: 
+			- override displayPackages, selectPackages because these are unique to the type of Prius model
+
+			- addAdditionalSpecs: add/remove colors or accessories that are specific to the Prius. 
+
+			- override init: when I declare the Prius object I want to st myType to "Prius" and run "additionalSpecs()" 
+
+	3. var car = Prius(): 
+
+
+Directions:
+
+	1. Decare variable var car = Prius()
+
+	2. Mimic the "next step" option. After declaring the car, run nextStep. It will display all the models and costs and ask the user to select a model.  
+
+	3. Type: selectModel(model: "?") to save model.  Will return an error if the model does not exist.
+
+	4. Type: nextStep() to display the available engines
+
+	5. Type: selectEngine(engine: "?") to save engine. Will return an error if the engine does not exist.
+
+	6. Type: nextStep() to display the exterior colors with costs.
+
+	7. Type: selectExteriorColor(color: "?") to save exterior color. Will return error if the color does not exist.
+
+	8. Type: nextStep() to display the interior colors with costs.
+
+	9. Type: selectIntiorColor(color: "?") to save interior color. Will return an error if the color does not exist.
+
+	10. Type: nextStep() to display all packages with costs
+
+	11. Type: selectPackage(name: "?") to add the package. Will return an error if the package does not exist for that model.
+
+	12. Type: nextStep() to display all accessories with costs
+
+	13. Type: displayAccessories(filter: "All" or "Interior" or "Exterior") filter 
+
+	14. Type: selectAccessories(name: "?") to add an accessory.  Keep writing this script to add additional accessories.
+
+	15. Type: displaySummary(): Will give a similar output to the website.  Shows the model, colors, packages, accessories, and their respective costs.  Add delivery, processing, and handling fee to total cost. 
+
