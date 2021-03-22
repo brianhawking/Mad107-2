@@ -1,0 +1,23 @@
+
+https://learnappmaking.com/filemanager-files-swift-how-to/
+
+https://nshipster.com/filemanager/
+
+
+        code to list all documents in current directory.
+        print(path)
+
+        do {
+            let contents =
+                try FileManager.default.contentsOfDirectory(at: path,
+                                                            includingPropertiesForKeys: nil,
+                                                            options: [.skipsHiddenFiles])
+            for file in contents {
+                print(file)
+            }
+        }
+        catch {
+            print("no files")
+        }
+
+        path = path.appendingPathComponent(profileName)
