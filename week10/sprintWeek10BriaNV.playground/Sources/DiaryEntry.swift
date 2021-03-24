@@ -71,7 +71,7 @@ public struct DiaryManager {
     }
     
     // if user does not exist, create a folder for user
-    public func createProfile(profileName: String) {
+    public func createProfile(profileName: String, age: Int) {
         
         // this will be the pathway to user's folder
         let path = FileManager.default.urls(for: .documentDirectory, in:

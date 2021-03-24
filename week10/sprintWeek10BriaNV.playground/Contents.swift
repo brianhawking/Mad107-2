@@ -9,14 +9,14 @@ import Cocoa
 5. print it to screen
  */
 
-DiaryManager().userExists(profileName: "Connor")
+//DiaryManager().userExists(profileName: "Connor")
 DiaryManager().deleteProfile(profileName: "Connor")
-DiaryManager().createProfile(profileName: "Connor")
+//DiaryManager().createProfile(profileName: "Bill", age: 4)
 
 
 var entry = DiaryEntry(
     mood: "Sad",
-    text: "I broke one of my toys today.  I am sad."
+    text: "Dear Diary,\nI broke one of my toys today.  I am sad."
 )
 
 //print(entry)
