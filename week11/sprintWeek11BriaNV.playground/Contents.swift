@@ -1,12 +1,22 @@
 import Cocoa
 import UIKit
+import PlaygroundSupport
 
-class viewController: UIViewController {
+class ViewController: UIViewController {
+    
+    
+}
+
+let vc = ViewController()
+vc.view.backgroundColor = UIColor.green
+vc.view.frame = CGRect(x:0,y:0,width:300,height:500)
+PlaygroundPage.current.liveView = vc
 
 
-/* Goals Week 11
-1. Add viewcontrollers so I can make this interactive
-*/
+/*
+ Goals:
+1. Add viewcontrollers
+ */
 
 //DiaryManager().userExists(profileName: "Connor")
 DiaryManager().deleteProfile(profileName: "Connor")
