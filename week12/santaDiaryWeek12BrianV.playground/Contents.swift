@@ -2,15 +2,9 @@ import UIKit
 import PlaygroundSupport
 
 print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0])
-DiaryManager().displayEntries(profileName: "Connor")
-//DiaryManager().createProfile(profileName: "Connor", age: 1)
-//
-//var entry = DiaryEntry(
-//    mood: "Sad",
-//    text: "Dear Diary,\nI broke one of my toys today.  I am sad."
-//)
-//
-//DiaryManager().addToDiary(profileName: "Connor", entry: entry)
+//DiaryManager().displayEntries(profileName: "Connor")
+
+//DiaryManager().displayEntries(profileName: "Connor", year: 2021)
     
 extension UIColor {
     public convenience init?(hex: String) {
@@ -56,19 +50,128 @@ class ViewController: UIViewController {
     
    
     // addProfile
-    let nameLabel = UITextField()
+    let nameLabel = TextFieldWithPadding()
     let addName = UIButton()
-    let resultsLabel = UILabel()
+    let resultsLabel = SSPaddingLabel()
     let deleteButton = UIButton()
     let backToLoginButton = UIButton()
     
     // login page
     let loginButton = UIButton()
     let createButton = UIButton()
+    
+    // filter page
+    let yearTextField = TextFieldWithPadding()
+    let monthTextField = TextFieldWithPadding()
+    let dayTextField = TextFieldWithPadding()
+    let searchButton = UIButton()
+    let userLabel = SSPaddingLabel()
+    let moodTextField = TextFieldWithPadding()
+    
+    
+    // create or read diaries
+    let createDiaryButton = UIButton()
+    let readDiaryButton = UIButton()
+    
+    
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        resultsLabel.padding = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        
+        userLabel.padding = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+    }
+    
+    @objc func createOrReadView() {
+        removeSubviews()
+        
+        let verticalMargin:CGFloat = 100
+        let horizontalMargin:CGFloat = 20
+        let verticalSpacing:CGFloat = 20
+        
+        pageTitleLabel.frame = CGRect(x:horizontalMargin, y:20, width: view.frame.width-2*horizontalMargin, height: 50)
+        pageTitleLabel.text = "What do you want to do?"
+        pageTitleLabel.textColor = UIColor(hex: "#FFFFFFFF")
+        view.addSubview(pageTitleLabel)
+        
+        userLabel.frame = CGRect(x:horizontalMargin,y:verticalMargin, width: view.frame.width-2*horizontalMargin, height: 50)
+        userLabel.text = user
+        userLabel.backgroundColor = .white
+        view.addSubview(userLabel)
+        
+        createDiaryButton.frame = CGRect(x: horizontalMargin, y:verticalMargin+50+1*verticalSpacing, width: view.frame.width-2*horizontalMargin, height: 50)
+        createDiaryButton.backgroundColor = UIColor(hex: "#FF1B1Cff")
+        createDiaryButton.setTitle("Add a diary entry", for: .normal)
+        createDiaryButton.setTitleColor(.white, for: .normal)
+        createDiaryButton.addTarget(self, action: #selector(readOrWrite(_:)), for: .touchUpInside)
+        view.addSubview(createDiaryButton)
+        
+        readDiaryButton.frame = CGRect(x: horizontalMargin, y: verticalMargin+100+2*verticalSpacing, width: view.frame.width-2*horizontalMargin, height: 50)
+        readDiaryButton.backgroundColor = UIColor(hex: "#FF1B1CFF")
+        readDiaryButton.setTitle("Find a diary entry", for: .normal)
+        readDiaryButton.setTitleColor(.white, for: .normal)
+        readDiaryButton.addTarget(self, action: #selector(readOrWrite(_:)), for: .touchUpInside)
+        view.addSubview(readDiaryButton)
+        
+        resultsLabel.frame = CGRect(x: 20, y: 350, width: view.frame.width-40, height: 50)
+        resultsLabel.backgroundColor = .white
+        resultsLabel.text = ""
+        view.addSubview(resultsLabel)
+        
+
+
+        
+    }
+    
+    @objc func filterView() {
+        
+        removeSubviews()
+        
+        let verticalMargin:CGFloat = 80
+        let horizontalMargin:CGFloat = 20
+        let verticalSpacing:CGFloat = 20
+        
+        pageTitleLabel.frame = CGRect(x:horizontalMargin, y:20, width: view.frame.width-2*horizontalMargin, height: 50)
+        pageTitleLabel.text = "Search for Diary Entries"
+        pageTitleLabel.textColor = UIColor(hex: "#FFFFFFFF")
+        view.addSubview(pageTitleLabel)
+        
+        userLabel.frame = CGRect(x:horizontalMargin,y:verticalMargin, width: view.frame.width-2*horizontalMargin, height: 50)
+        userLabel.backgroundColor = .white
+        userLabel.text = user
+        view.addSubview(userLabel)
+        
+        yearTextField.frame = CGRect(x: horizontalMargin, y:verticalMargin+50+1*verticalSpacing, width: view.frame.width-2*horizontalMargin, height: 50)
+        yearTextField.backgroundColor = .white
+        yearTextField.text = ""
+        view.addSubview(yearTextField)
+        
+        monthTextField.frame = CGRect(x: horizontalMargin, y:verticalMargin+100+2*verticalSpacing, width: view.frame.width-2*horizontalMargin, height: 50)
+        monthTextField.backgroundColor = .white
+        monthTextField.text = ""
+        view.addSubview(monthTextField)
+        
+        dayTextField.frame = CGRect(x: horizontalMargin, y:verticalMargin+150+3*verticalSpacing, width: view.frame.width-2*horizontalMargin, height: 50)
+        dayTextField.backgroundColor = .white
+        dayTextField.text = ""
+        view.addSubview(dayTextField)
+        
+        searchButton.frame = CGRect(x: horizontalMargin, y:verticalMargin+250+5*verticalSpacing, width: view.frame.width-2*horizontalMargin, height: 50)
+        searchButton.backgroundColor = UIColor(hex: "#FF1B1Cff")
+        searchButton.setTitle("Search", for: .normal)
+        searchButton.setTitleColor(.white, for: .normal)
+        searchButton.addTarget(self, action: #selector(filter(_:)), for: .touchUpInside)
+        view.addSubview(searchButton)
+        
+        moodTextField.frame = CGRect(x: horizontalMargin, y:verticalMargin+200+4*verticalSpacing, width: view.frame.width-2*horizontalMargin, height: 50)
+        moodTextField.backgroundColor = .white
+        moodTextField.text = ""
+        view.addSubview(moodTextField)
+        
+        
+        
         
     }
     
@@ -245,6 +348,10 @@ class ViewController: UIViewController {
         }
     }
     
+    @objc func filter(_ sender: UIButton) {
+        DiaryManager().displayEntries(profileName: user, year: yearTextField.text!, month: monthTextField.text!, day: dayTextField.text!, mood: moodTextField.text!)
+    }
+    
     @objc func setMood(_ sender: UIButton) {
         mood = sender.titleLabel!.text!
         resultsLabel.text = "You selected \(mood)"
@@ -296,6 +403,37 @@ class ViewController: UIViewController {
         }
     }
     
+    @objc func readOrWrite(_ sender: UIButton) {
+        
+        let name = nameLabel.text!
+        if name != "" {
+            if DiaryManager().userExists(profileName: name) {
+                
+            }
+            else {
+                resultsLabel.text = "User does not exist."
+                return
+            }
+        }
+        else {
+            resultsLabel.text = "Please enter a name."
+        }
+        
+        if let title = sender.titleLabel?.text {
+            
+            if title == "Add a diary entry" {
+                // go to addDiaryEntry
+                setupDiaryUI()
+            }
+            
+            if title == "Find a diary entry" {
+                // go to filter page
+                filterView()
+            }
+        }
+        
+    }
+    
     @objc func login(_ sender: UIButton) {
         
         
@@ -305,10 +443,11 @@ class ViewController: UIViewController {
             return
         }
         else {
+            
             if DiaryManager().userExists(profileName: nameLabel.text!) {
                 resultsLabel.text = "Log in now!"
                 user = nameLabel.text!
-                setupDiaryUI()
+                createOrReadView()
             }
             else {
                 resultsLabel.text = "\(nameLabel.text!) does not exist."

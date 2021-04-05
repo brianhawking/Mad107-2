@@ -74,7 +74,7 @@
             
             // check if there's a folder for user
             if FileManager.default.fileExists(atPath: path.path) {
-                print("\(profileName) exists")
+                //print("\(profileName) exists")
                 return true
             }
             else {
@@ -135,28 +135,127 @@
             }
         }
         
-        public func displayEntries(profileName: String) {
-            let path = FileManager.default.urls(for: .documentDirectory, in:
+        
+        public func displayEntries(profileName: String, year: String, month: String, day: String, mood: String) {
+            var path = FileManager.default.urls(for: .documentDirectory, in:
                 .userDomainMask)[0]
                 .appendingPathComponent("Users")
                 .appendingPathComponent(profileName)
                 .appendingPathComponent("Diary")
-                .appendingPathComponent("2021")
-                .appendingPathComponent("4")
-                .appendingPathComponent("1")
+            
+            if year != "" {
+                path = path.appendingPathComponent(year)
+                
+                if month != "" {
+                    path = path.appendingPathComponent(month)
+                    
+                    if day != "" {
+                        path = path.appendingPathComponent(day)
+                        // show all entries on this day
+                        do {
+                            let entries = try FileManager.default.contentsOfDirectory(atPath: path.path)
+                            for entry in entries {
+                                print(entry)
+                            }
+                        }
+                        catch {
+                            print("Something went wrong")
+                        }
+                    }
+                    else {
+                        do {
+                            let dayContents = try FileManager.default.contentsOfDirectory(atPath: path.path)
+                            for day in dayContents {
+                                print("day:", day)
+                                let path = path.appendingPathComponent(day)
+                                do {
+                                    let entries = try FileManager.default.contentsOfDirectory(atPath: path.path)
+                                    for entry in entries {
+                                        print("entry", entry)
 
-            do {
-                let contents = try FileManager.default.contentsOfDirectory(atPath: path.path)
+                                    }
+                                }
+                            }
+                        }
+                        catch {
+                            print("Something went wrong")
+                        }
+                    }
+                }
+                else {
+                    do {
+                        let monthContents = try FileManager.default.contentsOfDirectory(atPath: path.path)
+                        for month in monthContents {
+                            print("month:", month)
+                            let path = path.appendingPathComponent(month)
+                            do {
+                                let dayContents = try FileManager.default.contentsOfDirectory(atPath: path.path)
+                                for day in dayContents {
+                                    print("day:", day)
+                                    let path = path.appendingPathComponent(day)
+                                    do {
+                                        let entries = try FileManager.default.contentsOfDirectory(atPath: path.path)
+                                        for entry in entries {
+                                            print("entry", entry)
 
-                for file in contents {
-                    print(file)
+                                        }
+                                    }
+                                    catch {
+                                        print("No entries found.")
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    catch {
+                        print("No entries found.")
+                    }
+                    
                 }
             }
-            catch {
-                print("No entries were found.")
+            else {
+                // show all entries
+                do {
+                    let yearContents = try FileManager.default.contentsOfDirectory(atPath: path.path)
+                    for year in yearContents {
+                        displayText(text: "year: \(year)")
+                        // grab year and search it's contents
+                        let path = path.appendingPathComponent(year)
+                        do {
+                            let monthContents = try FileManager.default.contentsOfDirectory(atPath: path.path)
+                            for month in monthContents {
+                                print("month:", month)
+                                let path = path.appendingPathComponent(month)
+                                do {
+                                    let dayContents = try FileManager.default.contentsOfDirectory(atPath: path.path)
+                                    for day in dayContents {
+                                        print("day:", day)
+                                        let path = path.appendingPathComponent(day)
+                                        do {
+                                            let entries = try FileManager.default.contentsOfDirectory(atPath: path.path)
+                                            for entry in entries {
+                                                print("entry", entry)
+    
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+                }
+                catch {
+                    print("No entires found.")
+                }
             }
-               
+           
+            
+
+            
+            
         }
+        
         
         // converts the diary entry to JSON object.
         public func addToDiary(profileName: String, entry: DiaryEntry) -> Bool {
